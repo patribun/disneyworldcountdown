@@ -1,0 +1,227 @@
+/* --- General & Background --- */
+:root {
+    --primary-blue: #89cff0; /* Baby Blue */
+    --secondary-pink: #f8c8dc; /* Cinderella Pink */
+    --accent-gold: #ffd700; /* Gold */
+    --mickey-red: #ff0000;
+    --mickey-black: #333;
+}
+
+body {
+    font-family: 'Cinzel Decorative', cursive;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(180deg, var(--primary-blue) 0%, #ffffff 100%);
+    min-height: 100vh;
+    color: var(--mickey-black);
+    text-align: center;
+    overflow-x: hidden;
+}
+
+h1 {
+    color: var(--accent-gold);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* --- Login & Main Containers --- */
+#login-container, #main-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#login-container.active, #main-container.active {
+    display: flex;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 2px solid var(--accent-gold);
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+button {
+    padding: 12px 25px;
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: 700;
+    font-size: 1rem;
+    background-color: var(--secondary-pink);
+    color: var(--mickey-black);
+    border: 2px solid var(--accent-gold);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* --- Countdown Timer --- */
+#countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid var(--accent-gold);
+    min-width: 100px;
+}
+
+.time-box span {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--mickey-black);
+}
+
+/* Sparkle Animation */
+.sparkle {
+    animation: sparkle-effect 0.5s ease-in-out;
+}
+
+@keyframes sparkle-effect {
+    0% { transform: scale(1); text-shadow: 0 0 5px var(--accent-gold); }
+    50% { transform: scale(1.2); text-shadow: 0 0 20px var(--accent-gold), 0 0 30px var(--secondary-pink); }
+    100% { transform: scale(1); text-shadow: 0 0 5px var(--accent-gold); }
+}
+
+/* --- Game Section --- */
+#game-section {
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+#game-area {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-color: #fff;
+    border: 2px dashed var(--secondary-pink);
+    border-radius: 10px;
+    cursor: crosshair;
+}
+
+/* Mickey Head Shape */
+.mickey-head {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: var(--mickey-black);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.mickey-head:hover {
+    transform: scale(1.1);
+}
+
+.mickey-head::before, .mickey-head::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: var(--mickey-black);
+    border-radius: 50%;
+    top: -10px;
+}
+
+.mickey-head::before { left: -10px; }
+.mickey-head::after { right: -10px; }
+
+
+/* --- Confetti --- */
+.confetti {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--mickey-black);
+    border-radius: 50%;
+    top: -20px;
+    opacity: 0;
+    animation: fall 5s linear forwards;
+}
+
+.confetti::before, .confetti::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: var(--mickey-black);
+    border-radius: 50%;
+    top: -4px;
+}
+.confetti::before { left: -4px; }
+.confetti::after { right: -4px; }
+
+
+@keyframes fall {
+    from {
+        top: -20px;
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+    to {
+        top: 100vh;
+        opacity: 0;
+        transform: rotate(720deg);
+    }
+}
+
+/* --- NEW: Leaderboard Styles --- */
+#leaderboard-section {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+}
+
+#leaderboard-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#leaderboard-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 1.2rem;
+    border-bottom: 1px solid var(--secondary-pink);
+}
+
+#leaderboard-list li:last-child {
+    border-bottom: none;
+}
+
+#leaderboard-list li .name {
+    text-transform: capitalize; /* Makes names look cleaner */
+}
+
+#leaderboard-list li .score {
+    font-weight: bold;
+    color: var(--mickey-black);
+}

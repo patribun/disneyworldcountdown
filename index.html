@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Countdown</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="login-container" class="active">
+        <h1>Welcome, Disney Fan!</h1>
+        <p>Please enter your name to save your score.</p>
+        <input type="text" id="username-input" placeholder="Enter your name">
+        <button id="login-button">Enter the Magic</button>
+    </div>
+
+    <div id="main-container">
+        <header>
+            <h1>Disney World Countdown</h1>
+            <p>The magic is waiting!</p>
+        </header>
+
+        <div id="countdown-timer">
+            <div class="time-box"><span id="days">0</span>Days</div>
+            <div class="time-box"><span id="hours">0</span>Hours</div>
+            <div class="time-box"><span id="minutes">0</span>Minutes</div>
+            <div class="time-box"><span id="seconds">0</span>Seconds</div>
+        </div>
+
+        <div id="game-section">
+            <h2>Mickey Tapper Game</h2>
+            <div class="game-info">
+                <span>Score: <b id="current-score">0</b></span>
+                <span>Lives: <b id="lives">3</b></span>
+                <span id="user-highscore">Your High Score: <b id="high-score">0</b></span>
+            </div>
+            <div id="game-area">
+                <button id="start-game-button">Start Game</button>
+            </div>
+        </div>
+        
+        <div id="leaderboard-section">
+            <h2>Global Leaderboard</h2>
+            <ol id="leaderboard-list"></ol>
+        </div>
+        
+    </div>
+
+    <div id="confetti-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
